@@ -1,0 +1,141 @@
+Dear Pavel,
+
+As promised, I'm sending some initial guidance on revisions to 
+your AWR manuscript because we have only 30 days to revise it, 
+and it is unlikely it will make it into the special issue if I 
+have to send it out for re-review.  I hope you will not take 
+offense to my comments. I am being blunt to save your time and 
+faithfully represent the wishes of the guest editors and the 
+editor-in-chief. My comments are prefaced by CEK:
+
+CEK: Note that the theta form/saturation form is given in 1, 
+not the mixed form (2 is the mixed form), 3 is the head-based 
+form, which is not mass conservative unless you use  the so-called 
+chord-slope approximation to theta derivative. 
+
+**** KEES SAID THAT WE DO NOT NEED TO DO ANYTHING ABOUT THIS
+
+CEK: Alt and Luckhaus doesn't cover all possible saturation 
+distributions in the analysis 
+
+**** KEES SAID THAT WE DO NOT NEED TO DO ANYTHING ABOUT THIS
+
+CEK: 2-35: When van Genuchten's formula _is_ substituted...
+
+**** FIXED BY PAVEL
+
+CEK: 3-9: fo -> of
+
+**** FIXED BY PAVEL
+
+CEK: The last two paragraphs in section 3 do address reviewer 2's 
+comment 3 in a sense. It would be nice to use a problem for which 
+spectral element methods and straight p-adaptivity don't work. Do 
+you not have a fairly well studied example of such a case?
+
+****
+
+CEK: 4-45: You should note that discontinuous initial conditions 
+are extremely common in applications.  
+
+**** 
+
+CEK: 5-50: Comment that higher-order time discretization would be 
+more appropriate and is a topic of future and past research. You 
+can cite mine and Miller/Kelley papers on adaptive variable order 
+BDF methods for RE and two-phase flow in porous media where we 
+showed that even low-order discretizations benefit form higher-order 
+adaptive time discretizations.
+
+****
+
+CEK: 9-37: Add Miller_Williams_98 reference in context of spline 
+approximations. Also note in general it's been found that 
+differentiating the spline is the right thing to do, not splining 
+the derivatives. These techniques are widely used in multiphase 
+flow in porous media due to the expense of evaluating the 
+constitutive relations and the degeneracies of many models at 
+extreme values of the saturation.
+
+****
+
+CEK: Add discussions of the behavior of hp vs h for the test 
+problems including quantitative descriptions. Looks like  hp is 
+about twice as fast  over all as h-p=1, but be precise (quantitatively 
+and qualitatively) and give a critical evaluation. During infiltration 
+it looks like there is no difference an h-p=2 looks like it provides 
+quite a bit of "bang for the buck".  Real world applications typically 
+contain smooth and rough phases in both space and time so what h-p buys 
+you may depend on the regimes one most often addresses. Although your 
+results show that h-p is not slower, it's all presumably done in the 
+same implementation so it's possible that an optimized fixed h and/or 
+p method would win in terms of CPU time for purely rapid infiltraiton 
+problems.
+
+**** 
+
+> Whilst the authors have addressed some of the concerns in my previous 
+report, I feel that there
+> is still a number of issues which need to be considered further.
+> 1. It is still my opinion that the paper contains too much technical 
+material on hp-FEM and on
+> the proposed software packages. In particular, Section 7 could be 
+shortened considerably by
+> simply sticking to the general key points, possibly by giving suitable 
+references, or by adding
+> a short comment for each of them. In addition, Section 8.2 could be 
+dropped completely by
+> giving a web link where the interested user could find the corresponding 
+information in form
+> of. e.g., a tutorial.
+
+CEK: Disregard the comment about Section 7 and go in the direction of more 
+detail as indicated by  Reviewer #1's original comment (as well as 
+confidential comments to the editors on your latest version):
+
+> For example, give the weak formulation for Richards’ equation,
+> discuss the performance of the hierarchical error estimators
+> and multimesh assembly for Richards’ equation. Section 6.6 is
+> a start, but it should be moved to the Richards’ equation section
+> of the paper and expanded significantly.
+
+CEK: You and the reviewer misjudge the AWR readership, which includes many 
+mathematicians and computational scientists: details of mathematical methods 
+and algorithms should be given in order to make the results reproducible. 
+You can do so by increasing the level of detail in the current section 7 
+and adding appendices if necessary to prevent derivations from disrupting 
+the flow. 
+
+> 2. The example in Section 3 is unchanged. My suggestion was to replace this example by an
+> example that illustrates the ability of adaptive hp FEM (i.e., the combination of h and p
+> refinements) in a better way. In the current example the hp method behaves like a spectral
+> scheme. Therefore, an example featuring, for instance, a corner singularity would be more
+> appropriate.
+
+CEK: See comment above
+
+**** THIS WAS REPLACED BY L-SHAPE DOMAIN PROBLEM. 
+
+> 3. The author’s explanation on the use of Runge-Kutta time integration schemes seems very
+> vague. Indeed, it does not seem to be clear why, in general, the use of a low-order time
+> stepping method (Crank-Nicholson is applied in the paper) in combination with a highly
+> accurate hp method in space is a plausible choice. Also, resolving initial singularities at
+> time t = 0, which my appear even for ’decent’ initial conditions, seems to be relevant for the
+> purpose of good numerical approximations in practice.
+> 1
+
+CEK: As I stated above, initial singularities are relevant in real applications. 
+The RE solutions for infiltration into dry media are really space-time singularities. 
+I would clean up your discussion and leave the issue open for future work, though 
+as I mentioned, we have previous work with adaptive BDF's for lower order spatial 
+discretizations that do show that higher-order convergence in time is achieved by 
+higher order BDF's even for low-order space discretizations. My guess would be 
+that sufficiently regularized hp-discretizations would gain even more from higher-order 
+time discretizations.
+
+I am going to be busy for the next couple of days, but maybe we can discuss some of these 
+issues in Reno next week.
+
+Best Regards,
+Chris
+
