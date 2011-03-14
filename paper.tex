@@ -38,6 +38,14 @@
 %% \documentclass[final,5p,times]{elsarticle}
 %% \documentclass[final,5p,times,twocolumn]{elsarticle}
 
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}%[dvips]
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{pstricks}
+\usepackage{mathrsfs}
+
 \newcommand{\bfxi}{\mbox{\boldmath $\xi$}}
 \newcommand{\bfnu}{\mbox{\boldmath $\nu$}}
 \newcommand{\bflam}{\mbox{\boldmath $\Lambda$}}
@@ -60,6 +68,263 @@
 \newcommand{\bfY}{\mbox{\boldmath $Y$}}
 \newcommand{\bfX}{\mbox{\boldmath $X$}}
 \newcommand{\bfC}{\mbox{\boldmath $C$}}
+
+
+%%%%%%%%%%%%%new commands%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\icom}{{\mbox{\rm $\scriptscriptstyle ^\mid$\hspace{-0.40em}C}}}
+\newcommand{\om}{\Omega}
+\newcommand{\pom}{\partial\Omega}
+\newcommand{\epal}{{\mathcal E}(\overline{\om})}
+\newcommand{\ak}{A_k}
+\newcommand{\bk}{B_k}
+\newcommand{\buuv}{b(\bfu,\bfu,\bfv)}
+\newcommand{\buwt}{b(\bfu,\bfw,.)}
+\newcommand{\buwv}{b(\bfu,\bfw,\bfv)}
+\newcommand{\bwuv}{b(\bfw,\bfu,\bfv)}
+\newcommand{\cco}{c = c(\om)}
+\newcommand{\ccot}{c = c(\om,T)}
+\newcommand{\cd}{c_2}
+\newcommand{\cdco}{c_2 = c_2(\om)}
+\newcommand{\cj}{c_1}
+\newcommand{\cjco}{c_1 = c_1(\om)}
+\newcommand{\cjcot}{c_1 = c_1(\om,T)}
+\newcommand{\ct}{c_3}
+\newcommand{\ctco}{c_3 = c_3(\om)}
+\newcommand{\cy}{c_4}
+\newcommand{\cyco}{c_4 = c_4(\om)}
+\newcommand{\ddt}{{{d}\over{dt}}}
+\newcommand{\dom}{\mbox{ }d(\om)}
+\newcommand{\ds}{\mbox{ }ds}
+\newcommand{\dt}{\mbox{ }dt}
+\newcommand{\dpg}{\mbox{ }d(\partial\om)}
+\newcommand{\dc}{\|}
+\newcommand{\dz}{\bigl(\!\bigl(}
+\newcommand{\bdz}{(\!(}
+\newcommand{\dzr}{)\!)}
+\newcommand{\eij}{e_{ij}}
+\newcommand{\eiju}{e_{ij}(\bfu)}
+\newcommand{\eijv}{e_{ij}(\bfv)}
+\newcommand{\eijw}{e_{ij}(\bfw)}
+\newcommand{\eu}{{\mathcal A}_u}
+\newcommand{\fk}{f_k}
+\newcommand{\fn}{f_0}
+\newcommand{\gj}{\Gamma_1}
+\newcommand{\gd}{\Gamma_2}
+\newcommand{\gh}{{\mathcal G}_H}
+\newcommand{\gv}{{\mathcal G}}
+\newcommand{\gt}{\Gamma_3}
+\newcommand{\gc}{\Gamma_4}
+\newcommand{\ha}{H}
+\newcommand{\haa}{H}
+\newcommand{\intnt}{\int_0^T}
+\newcommand{\intnst}{\int_0^{T^*}}
+\newcommand{\iom}{\int_\om}
+\newcommand{\isom}{\int_{\partial\om}}
+\newcommand{\kc}{K_C}
+\newcommand{\pcx}{P_c}
+\newcommand{\ldd}{L^2(0,T;\,D)}
+\newcommand{\ldsd}{L^2(0,\ts;\,D)}
+\newcommand{\ldh}{L^2(0,T;\,H)}
+\newcommand{\ldsh}{L^2(0,\ts;\,H)}
+\newcommand{\ldon}{L^2(\om)^m}
+\newcommand{\ldv}{L^2(0,T;\,\vajd)}
+\newcommand{\ldsv}{L^2(0,\ts;\,\vajd)}
+\newcommand{\ldvso}{L^2(0,T;\,\vso)}
+\newcommand{\lnvso}{L^{\infty}(0,T;\,\vso)}
+\newcommand{\lnv}{L^{\infty}(0,T;\,\vajd)}
+\newcommand{\lnsv}{L^{\infty}(0,\ts;\,\vajd)}
+\newcommand{\lnvh}{L^{\infty}(0,T;\,\vajdh)}
+\newcommand{\ldvh}{L^2(0,T;\,\vajdh)}
+\newcommand{\lnh}{L^\infty(0,T;\,H)}
+\newcommand{\lno}{L^\infty(\om)^3}
+\newcommand{\lco}{L^4(\om)^m}
+\newcommand{\ldor}{L^2(\om)/\iree}
+\newcommand{\mc}{{\mathcal M}_C}
+\newcommand{\mn}{M_0}
+\newcommand{\mr}{{\mathcal M}_R}
+\newcommand{\nd}{\|_D}
+\newcommand{\njd}{\|_{V^{1,2}}}
+\newcommand{\nnd}{\|_{H}}
+\newcommand{\njp}{\|_{V^{1,p}}}
+\newcommand{\njq}{\|_{V^{1,q}}}
+\newcommand{\njqh}{\|_{({V^{1,q}})^*}}
+\newcommand{\nldd}{\|_{L^2(0,T;\,D)}}
+\newcommand{\nldv}{\|_{\ldv}}
+\newcommand{\nldvh}{\|_{L^2(0,T;\,\vajd^*)}}
+\newcommand{\nlnv}{\|_{\lnv}}
+\newcommand{\nlnvso}{\|_{L^\infty(0,T;\,\vajd^{{7/8},2})}}
+\newcommand{\nldvso}{\|_{L^2(0,T;\,\vajd^{{7/8},2})}}
+\newcommand{\nlnvh}{\|_{\lnvh}}
+\newcommand{\nldh}{\|_{L^2(0,T;\,H)}}
+\newcommand{\nlnh}{\|_{L^\infty(0,T;\,\haa)}}
+\newcommand{\nha}{\|_{\haa}}
+\newcommand{\nlco}{\|_{\lco}}
+\newcommand{\nre}{\|_E}
+\newcommand{\nt}{(0,T)}
+\newcommand{\nv}{\|_V}
+\newcommand{\nvjdh}{\|_{\vajdh}}
+\newcommand{\nvso}{\|_{\vso}}
+\newcommand{\nvrd}{\|_{\vrd}}
+\newcommand{\nvnth}{\|_{\vnth}}
+\newcommand{\nwjd}{\|_{\wjdo}}
+\newcommand{\nwkd}{\|_{\wkd}}
+\newcommand{\nx}{\|_X}
+\newcommand{\nxj}{\|_{\xj}}
+\newcommand{\nxd}{\|_{\xd}}
+\newcommand{\nxp}{\|_{\xp}}
+\newcommand{\ny}{\|_{X_2}}
+\newcommand{\nyp}{\|_{\yp}}
+\newcommand{\ob}{{\mathcal B}}
+\newcommand{\obp}{{\mathcal B}_{\mathcal P}}
+\newcommand{\oc}{{\mathcal C}}
+\newcommand{\ocp}{{\mathcal C}_{\mathcal P}}
+\newcommand{\ogu}{{\mathcal G}_u}
+\newcommand{\ogpu}{{{\mathcal G}_{\mathcal P}}_{\bfu}}
+\newcommand{\oh}{{\cal H}}
+\newcommand{\ohj}{{\cal H}_1}
+\newcommand{\ohd}{{\cal H}_2}
+\newcommand{\oht}{{\cal H}_3}
+\newcommand{\okc}{\overline{\kc}}
+\newcommand{\oku}{{\cal K}_u}
+\newcommand{\okpu}{{{\cal K}_{\cal P}}_{\bfu}}
+\newcommand{\omnt}{\om\times\nt}
+\newcommand{\omu}{\bfgamma_0}
+\newcommand{\on}{{\cal N}}
+\newcommand{\onp}{{\cal N}_{\cal P}}
+\newcommand{\pres}{{\cal P}}
+\newcommand{\pu}{P;\bfu}
+\newcommand{\phik}{\bfPhi_k}
+\newcommand{\psik}{\bfPsi_k}
+\newcommand{\sh}{\bigr)\!\bigr)_H}
+\newcommand{\bsh}{\Bigr)\!\Bigr)_H}
+\newcommand{\bshaa}{\bigr)\!\bigr)_{0,2}}
+\newcommand{\swnjdo}{)\!)_{\wnjdo}}
+\newcommand{\sd}{)\!)_D}
+\newcommand{\svjd}{)\!)_V}
+\newcommand{\svajd}{\bigr)\!\bigr)_V}
+\newcommand{\bsvjd}{\bigr)\!\bigr)_V}
+\newcommand{\bsvajd}{\bigr)\!\bigr)_{1,2}}
+\newcommand{\sldv}{)\!)_{\ldv}}
+\newcommand{\sumkjinf}{\sum_{k=1}^{\infty}}
+\newcommand{\os}{{\cal S}}
+\newcommand{\osp}{{\cal S}_{\cal P}}
+\newcommand{\tc}{\|}
+\newcommand{\ts}{T^*}
+\newcommand{\tnt}{t\in(0,T)}
+\newcommand{\tnts}{t\in(0,\ts)}
+\newcommand{\ud}{\bfu_B}
+\newcommand{\uj}{{\bfu}_A}
+\newcommand{\uk}{\bfu_k}
+\newcommand{\unu}{{\bfu}_0}
+\newcommand{\vjd}{V}
+\newcommand{\vajd}{V}
+\newcommand{\vakp}{V^{k,p}}
+\newcommand{\vajdh}{\vajd^*}
+\newcommand{\vso}{V_\kappa^{{7/8},2}}
+\newcommand{\vrd}{V^{r_0,2}}
+\newcommand{\vvajd}{\bfv\in\vajd}
+\newcommand{\vnq}{V^{0,q}}
+\newcommand{\vnt}{V^{0,3}}
+\newcommand{\vnth}{(V^{0,3})^*}
+\newcommand{\wjdo}{W^{1,2}(\om)^m}
+\newcommand{\wnjdo}{W_0^{1,2}(\om)}
+\newcommand{\wnjdoh}{W_0^{1,2}(\om)^*}
+\newcommand{\wnjdon}{W_0^{1,2}(\om)^m}
+\newcommand{\wnjdonh}{(W_0^{1,2}(\om)^m)^*}
+\newcommand{\wjdp}{W^{1,{12/5}}(\om)}
+\newcommand{\wk}{\bfw_k}
+\newcommand{\wkd}{W^{k,2}(\om)^m}
+\newcommand{\wkci}{\bfw_{k,i}}
+\newcommand{\wkcj}{\bfw_{k,j}}
+\newcommand{\wki}{\bfw_{k_i}}
+\newcommand{\wsi}{{\bf w^*_i}}
+\newcommand{\wsj}{{\bf w^*_j}}
+\newcommand{\nwjdp}{\|_{\wjdp}}
+\newcommand{\xp}{X_{\cal P}}
+\newcommand{\xv}{X}
+\newcommand{\xj}{X_{1,\ts}}
+\newcommand{\xd}{X_{2,\ts}}
+\newcommand{\yp}{X_2_{\cal P}}
+\newcommand{\yv}{X_2}
+\newcommand{\zrx}{\bfzero_X}
+\newcommand{\zry}{\bfzero_{X_2}}
+\newcommand{\zrxp}{\bfzero_{\xp}}
+\newcommand{\zryp}{\bfzero_{\yp}}
+\newcommand{\bfb}{\mbox{\boldmath{$b$}}}
+% \newcommand{\bfx}{\mbox{\boldmath{$x$}}}
+% \newcommand{\bfn}{\mbox{\boldmath{$n$}}}
+\newcommand{\bfe}{\mbox{\boldmath{$e$}}}
+\newcommand{\bff}{\mbox{\boldmath{$f$}}}
+\newcommand{\bfF}{\mbox{\boldmath{$F$}}}
+\newcommand{\bfg}{\mbox{\boldmath{$g$}}}
+\newcommand{\bfq}{\mbox{\boldmath{$q$}}}
+\newcommand{\bfh}{\mbox{\boldmath{$h$}}}
+% \newcommand{\bfu}{\mbox{\boldmath{$u$}}}
+\newcommand{\bfw}{\mbox{\boldmath{$w$}}}
+% \newcommand{\bfv}{\mbox{\boldmath{$v$}}}
+% \newcommand{\bfz}{\mbox{\boldmath{$z$}}}
+\newcommand{\bfL}{\mbox{\boldmath{$L$}}}
+\newcommand{\bfa}{\mbox{\boldmath{$a$}}}
+% \newcommand{\bfU}{\mbox{\boldmath{$U$}}}
+% \newcommand{\bfM}{\mbox{\boldmath{$M$}}}
+\newcommand{\bfN}{\mbox{\boldmath{$N$}}}
+\newcommand{\bfE}{\mbox{\boldmath{$E$}}}
+% \newcommand{\bfC}{\mbox{\boldmath{$C$}}}
+% \newcommand{\bfS}{\mbox{\boldmath{$S$}}}
+\newcommand{\bfJ}{\mbox{\boldmath{$J$}}}
+% \newcommand{\bfy}{\mbox{\boldmath{$y$}}}
+\newcommand{\bfp}{\mbox{\boldmath{$p$}}}
+\newcommand{\bfK}{\mbox{\boldmath{$K$}}}
+\newcommand{\bfI}{\mbox{\boldmath{$I$}}}
+\newcommand{\bfP}{\mbox{\boldmath{$P$}}}
+\newcommand{\bfB}{\mbox{\boldmath{$B$}}}
+\newcommand{\bfH}{\mbox{\boldmath{$H$}}}
+\newcommand{\bfV}{\mbox{\boldmath{$V$}}}
+\newcommand{\bfW}{\mbox{\boldmath{$W$}}}
+% \newcommand{\bfD}{\mbox{\boldmath{$D$}}}
+% \newcommand{\bfR}{\mbox{\boldmath{$R$}}}
+\newcommand{\bfmathcalF}{\mbox{\boldmath{$\mathcal{F}$}}}
+\newcommand{\bfmathcalA}{\mbox{\boldmath{$\mathcal{A}$}}}
+% \newcommand{\bfX}{\mbox{\boldmath{$X$}}}
+\newcommand{\bfmu}{\mbox{\boldmath{$\mu$}}}
+\newcommand{\bflambda}{\mbox{\boldmath{$\lambda$}}}
+\newcommand{\bfomega}{\mbox{\boldmath{$\omega$}}}
+% \newcommand{\bfphi}{\mbox{\boldmath{$\phi$}}}
+\newcommand{\bfeta}{\mbox{\boldmath{$\eta$}}}
+\newcommand{\bftau}{\mbox{\boldmath{$\tau$}}}
+\newcommand{\bfPhi}{\mbox{\boldmath{$\Phi$}}}
+% \newcommand{\bfpsi}{\mbox{\boldmath{$\psi$}}}
+\newcommand{\bftheta}{\mbox{\boldmath{$\theta$}}}
+\newcommand{\bfPsi}{\mbox{\boldmath{$\Psi$}}}
+\newcommand{\bfT}{\mbox{\boldmath{${\cal T}$}}}
+\newcommand{\bfTheta}{\mbox{\boldmath{$\Theta$}}}
+\newcommand{\bfsigma}{\mbox{\boldmath{$\sigma$}}}
+\newcommand{\bfvarsigma}{\mbox{\boldmath{$\varsigma$}}}
+\newcommand{\bfupsilon}{\mbox{\boldmath{$\upsilon$}}}
+\newcommand{\bfgamma}{\mbox{\boldmath{$\gamma$}}}
+\newcommand{\bfvarphi}{\mbox{\boldmath{$\varphi$}}}
+\newcommand{\bfzeta}{\mbox{\boldmath{$\zeta$}}}
+\newcommand{\bfchi}{\mbox{\boldmath{$\chi$}}}
+% \newcommand{\bft}{\mbox{\boldmath{$t$}}}
+\newcommand{\bfmathcalp}{\mbox{\boldmath{$\mathcal{p}$}}}
+\newcommand{\bfLambda}{\mbox{\boldmath{$\Lambda$}}}
+\newcommand{\bfzero}{{\bf 0}}
+\newcounter{constants}
+\setcounter{constants}{0}
+\newcommand{\cn}[2]{ \addtocounter{constants}{1} \newcounter{c#1#2}
+\setcounter{c#1#2}{\value{constants}} c_{\arabic{c#1#2}} }
+\newcommand{\cc}[2]{c_{\arabic{c#1#2}}}
+\newcommand{\MBtext}[1]{\marginpar{\red \scriptsize $\leftarrow$ #1}}
+
+%%%%%%%%end new commands%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \usepackage{fancyvrb}
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\footnotesize}
@@ -318,7 +583,7 @@ hydraulic conductivity (the maximum value).
 
 
 %odkomentoval jsem, protoze se na tuto analytickou rovnici budu dal v textu odkazovat
-When van Genuchten's formula (\ref{vangenuchten-eq}) is substitutedin to this integral 
+When van Genuchten's formula (\ref{vangenuchten-eq}) is substituted in to this integral 
 law, the following analytical formula is obtained
 
   \begin{equation}
@@ -326,8 +591,8 @@ law, the following analytical formula is obtained
   K(h) = \left\{
     \begin{array}{l l}
     K_s \frac{\left( 1- (-\alpha h)^{nm} \left( 1+ (-\alpha h)^n \right)^{-m} \right)^2}{\left(1+(-\alpha h)^n \right)^{\frac{m}{2}}} \\
-    \mbox{for all $h \in$ $(-\infty,0)$};\\
-    K_s  \ \mbox{for all $h \in$ $\langle 0, +\infty)$}\\
+    \mbox{$\forall$ $h \in$ $(-\infty,0)$};\\
+    K_s  \ \mbox{$\forall$ $h \in$ $\langle 0, +\infty)$}\\
     \end{array} \right.
     \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -556,6 +821,9 @@ in the finite element context, let us say a few words about it.
 At time $t = 0$ the exact solution (\ref{ic}) is constant and it 
 does not satisfy the Dirichlet boundary condition on the top edge. 
 Therefore we begin at a small positive time $t = 10^{-3}$.
+It is accepted that discontinuous initial condition is extremely common
+in practice and thus it will appear in the last example (\ref{sec:example-barrier}).
+
 Starting from a coarse low-order mesh, automatic adaptivity is used
 to obtain a piecewise-polynomial approximate initial condition 
 $h_0$ that approximates the (exact) initial condition $h$ with 
@@ -602,8 +870,7 @@ Figs. \ref{fig:init-meshes-1} -- \ref{fig:init-meshes-3}.
 \caption{Initial mesh for $h$-FEM with linear elements (24843 DOF).}
 \label{fig:init-meshes-3}
 \end{figure}
-In this and all consequent examples we use the implicit second-order 
-Crank-Nicolson method for time integration.
+Implicit Euler method was used for time integration.
 In Figs. \ref{fig:init-meshes-1} - \ref{fig:init-meshes-3} 
 different colors are used to distinguish between 
 different polynomial degrees of finite elements. All elements in these computations 
@@ -985,11 +1252,16 @@ We consider the van Genuchten model~(\ref{vangenuchten-eq}) for the retention
 curve along with the Mualem model~(\ref{mualem-anal}) for the unsaturated hydraulic 
 conductivity function.
 
-Due to a large amount of computer operations involved in the evaluation of both 
-the van Genuchten's model~(\ref{vangenuchten-eq}) and Mualem's model~(\ref{mualem-anal}), 
-the functions $C(h)$ and $K(h)$ were replaced with quintic splines. Also the first derivative
-of $C(h)$ and the first and second derivatives of $K(h)$ were approximated in this way 
-for the Newton's method.
+
+It is well known  that
+both the van Genuchten's model~(\ref{vangenuchten-eq}) and Mualem's model~(\ref{mualem-anal})
+involves a large amount of computer operations for its evaluation (see e.g. Ross~\cite{ross} or Simunek et. al.~\cite{simunek}).
+Methods to approximate the unsaturated hydraulic conductivity function were discussed by Miller et al.~\cite{miller}
+and Hermite polynomials were recommended to use.
+
+The function $C(h)$ was replaced by Hermit cubic splines (only its first derivative is required 
+by the Newton's method) and $K(h)$ was replaced with Hermit quintic spline (its first and second derivative is required 
+by the Newton method). The derivatives are obtained by derivating the spline functions.
 Via this approximation we cured the problem of singularity of the second derivative 
 of $K(h)$, 
 
@@ -998,7 +1270,7 @@ $$
 $$ 
 The spline approximation $p(h)$ has 
 $$
-  p''(h=0) = 0,
+  p''(0) = 0,
 $$
 as shown in Fig. \ref{fig:kh-approx} (for gravel).
 This spline only differs from the original function $K(h)$ in the first interval 
@@ -1248,27 +1520,183 @@ as example "richards-capillary-barrier".
 
 \section{Conclusion and Outlook} \label{sec:8}
 
-To be done by Michal.\\
-
-Zde mame strucne popsat co jsme udelali, a rict ze
-Crank-Nicolson neni nase finalni volba a ze se 
-chystame zlepsit casovou integraci. Mame dat reference
-na Keese a Williamse, viz. soubor review\_kees.txt.
-
-Je treba sem napsat ze umoznime v Hermesu casovou integraci 
-zalozenou na libovolnych Butcherovych tabulkach,
-a ze potom bude adaptivita cas. kroku prirozene 
-mozna na zaklade vnorenych (embedded) R-K methods. 
+The previous sections~\ref{sec:compar} -- \ref{sec:example-barrier} presents an application
+ of the Richards' equation law on various theoretical and engineer problems. An h-based form~(\ref{rich-final})  numerically approximated by $h$ and $hp$ adaptive finite element method was considered. It is well known (see e.g. Celia, et. al.~\cite{celia}) that improper time discretization and integration techniques of this form of the Richards' equation exhibit in mass balance errors and erroneous estimates of an infiltration depth. 
+The error is caused by an improper discrete approximation of the time derivative term $C(h)\frac{\partial h}{\partial t}$, originating from mass (water content) derivative term $\frac{\partial \theta(h)}{\partial t}$.
+Higher order time integration methods as considered by Kees et al.~\cite{kees-time-integ} for two-phase flow can treat the mass balance problem. An adaptivity in time as a response to changing conditions is an efficient approach to maintain mass conservation.
+Alternatively, in case of a low order time integration method,  Kuraz~et.al.~\cite{kuraz-jcam} recommends time step adaptivity criterion based on retention curve torsion.
 
 
+The current implementation gives an estimate on error in  spatial approximation, nevertheless the time integration is maintained by 
+low order Crank-Nicholson and implicit Euler scheme. The implementation of the Richards equation into the Hermes project is currently  under 
+a development and the Crank-Nicholson scheme is not the final solution. More robust method, a so call SDIRKNG (Singly diagonally implicit Runge-Kutta-Nystr\'om  general), see~\cite{sdirk}, is under an evaluation. The time integration will be based on arbitrary Butcher's tables and then the time adaptivity will be enabled by embedded Runge-Kutta's methods by estimating truncation error.
+
+Based on the results obtained from all conducted examples it might be apparent that the $hp$ adaptive method requires a very similar computational CPU demands compared to $h$ adaptivity with $p=2$. The advantage of $hp$ FEM methods appears together with an increasing demands for spatial accuracy due to its exponential convergence. As input data uncertainty is a typical issue for many hydrological problems $h$ adaptivity with $p=2$ can provide a sufficiently good performance for many engineering applications.
 
 
 
 \section{Weak Formulation for the Newton's and Picard's Methods}\label{sec:9}
 
-To be done by Michal.\\
+Let $\Omega$ be a bounded domain in $\mathbb{R}^2$,
+with a Lipschitz boundary $\partial\Omega$. Let
+$\Gamma_D$ and $\Gamma_N$ be smooth open disjoint subsets of
+$\partial\Omega$ (not necessarily connected) such that
+$\partial\Omega = \overline{\Gamma_D}\cup\overline{\Gamma_N}$,
+$\textmd{meas}_{n-1}(\partial\Omega\setminus({\Gamma_D}\cup{\Gamma_N}
+))=0$ and $\textmd{meas}_{n-1}(\Gamma_D)>0$ and
+$\textmd{meas}_{n-1}(\Gamma_N)>0$. In what follows $\bfn$ denotes the outer unit
+normal to $\partial\Omega$. For positive $T$ let
+$Q_T=\Omega\times[0,T)$.
 
-Kees rikal ze toto je hodne dulezite a musi se to udelat poradne. 
+Let
+\begin{displaymath}
+{\mathcal{E}}(\overline{\Omega}):=\left\{\bfv\in{\mathcal
+C}^\infty(\overline{\Omega})^n; \, {\textmd{supp}\, \bfv}  \cap
+\Gamma_D = \emptyset \right\}.
+\end{displaymath}
+Let the linear space $\mathbb{V}$ be a closure of
+${\mathcal{E}}(\overline{\Omega})$ in the norm of $W^{1,2}(\om)$.
+
+The mathematical model of unsaturated flow with initial data and the
+mixed boundary conditions is described by the following
+initial--boundary value problem
+\begin{align}
+ C(h)\frac{\partial h}{\partial t}
+ - \nabla \cdot \left( K(h) \nabla h \right)
+  -  \frac{\partial K(h)}{\partial z}
+  &= 0  &&\textmd{in}\; Q_T,
+\label{dual_richards}
+\\
+h(0) &= h^0 &&\textmd{in}\;\Omega, \label{dual_richards_init}
+\\
+h &= h_D  &&\textmd{on}\;\Gamma_D \times
+[0,T),\label{dirichlet_dual}
+\\
+\frac{\partial h}{\partial \bfn} &= g &&\textmd{on}\;\Gamma_N \times
+[0,T). \label{neumann1_dual}
+\end{align}
+
+Here we consider all functions to be smooth enough and that the
+compatibility condition $h^0=h_D$ on $\Gamma_D$ holds.
+
+
+The weak formulation of the problem
+\eqref{dual_richards}--\eqref{neumann1_dual} is as follows:
+
+Let the given data satisfy
+\begin{equation}
+h^0 \in W^{1,2}(\Gamma_D),  \; h^0 = h_D(0) \; \textmd{on}\;\Gamma_D,
+\end{equation}
+\begin{equation}
+\begin{split}
+g \in \mathcal{C}^1([0,T];L^{\infty}(\Gamma_N)),  \; h_D \in
+\mathcal{C}^1([0,T];  \\ L^{\infty}(\Gamma_D)\cap W^{1,2}(\Omega)).
+\end{split}
+\end{equation}
+A function
+\begin{equation*}
+\begin{split}
+h \in \mathcal{C}([0,T);W^{1,2}(\Omega))\cap
+\mathcal{C}([0,T); \\ L^{\infty}(\Omega))\cap
+\mathcal{C}^1([0,T);L^{2}(\Omega)),
+\end{split}
+\end{equation*}
+such that
+$$
+h(0)=h_0 \textmd{ in } \Omega, \; h(t)=h_D(t) \textmd{ on } \Gamma_D
+\times [0,T),
+$$
+is a variational solution to the system
+\eqref{dual_richards}--\eqref{neumann1_dual} iff
+\begin{equation}
+\begin{split}
+\int_{\Omega}  C(h)\frac{\partial h}{\partial t}\varphi \;{\rm
+d}\bfx + \int_{\Omega} K(h)\nabla h \cdot \nabla \varphi \;{\rm
+d}\bfx - \\ - \int_{\Omega}\frac{\partial K(h)}{\partial z}\varphi \;{\rm
+d}\bfx = \int_{\Gamma_N} g \varphi \;{\rm d}\bfS
+\end{split}
+\label{discrete-rich}
+\end{equation}
+
+holds for all $\varphi \in \mathbb{V}$ and $t\in(0,T)$.
+
+
+
+The time discretization is accomplished for the example in section~\ref{sec:example} through a Crank-Nicholson scheme, then in  a compact form the  problem~\eqref{discrete-rich} can be written as
+
+\begin{equation}
+\begin{split}
+\mathbf{C(h}_n^{}) \frac{\mathbf{h}_{n}-\mathbf{h}_{n-1}}{\Delta t} +  \frac{1}{2}(\mathbf{K(h}_n^{})\mathbf{h}_n + \mathbf{K'(h}_n^{})\mathbf{h}_n  \\ \mathbf{K(h}_{n-1}^{})\mathbf{h}_{n-1} + \mathbf{K'(h}_{n-1}^{})\mathbf{h}_{n-1}) +  \mathbf{f} = 0 
+\end{split}
+\end{equation}
+
+where subscript $n$ denotes the time step number, $\Delta t$ denotes the time step length and $\mathbf{f}$ denotes the boundary value data.
+
+The examples in sections~\ref{sec:compar} and~\ref{sec:example-barrier} consider time integration method through an implicit Euler scheme, then in a compact form the  problem~\eqref{discrete-rich} can be written as
+
+\begin{equation}
+\begin{split}
+\mathbf{C(h}_n^{}) \frac{\mathbf{h}_{n}-\mathbf{h}_{n-1}}{\Delta t} +  \mathbf{K(h}_n^{})\mathbf{h}_n + \mathbf{K'(h}_n^{})\mathbf{h}_n +  \mathbf{f} = 0 
+\end{split}
+\end{equation}
+
+Because of the non-linearity of the Richards equation model both the Picard iteration method and the Newton iteration method was implemented to obtain the solution. Matrix $\mathbf{K'(h)}$ is obtained  from derivatives of $K(h)$ function in respect to $h$.
+The Picard iteration procedure is formulated as
+
+\begin{equation*}
+\mathbf{C(h}_n^{i-1}) \frac{\mathbf{h}_{n}^i-\mathbf{h}_{n-1}}{\Delta t} +  \mathbf{K(h}_n^{i-1})\mathbf{h}_n + \mathbf{K'(h}_n^{i-1})\mathbf{h}_n^i +  \mathbf{f} = 0 
+\end{equation*}
+
+where superscript $i$ denotes the iteration level. The convergency criterion is defined as $||h^i - h^{i-1}|| < \varepsilon$, where $\varepsilon$ is some desired error. 
+
+The Newton procedure is formulated as
+
+\begin{equation*}
+\begin{split}
+\frac{1}{\Delta t} \left( \frac{\partial }{\partial \mathbf{h}} \mathbf{C(h}_n^{i})(\mathbf{h}_n^{i}-\mathbf{h}_{n-1}) + \mathbf{C(h})_{n}^i \right)\Delta \mathbf{h}_n^i + \\ + \left(\frac{\partial }{\partial \mathbf{h}}
+\mathbf{K(h)}_n^i\mathbf{h}^i_n + \mathbf{K}(\mathbf{h)}_n^i + \frac{\partial }{\partial \mathbf{h}}
+\mathbf{K'(h)}_n^i\mathbf{h}^i_n + \mathbf{K'}(\mathbf{h)}_n^i \right) \Delta \mathbf{h}^i_n = \\ = - \left(\mathbf{C(h_n}^i)\frac{\mathbf{h}_n^i - \mathbf{h}_{n-1}}{\Delta t} + \mathbf{K(h)}_n^i\mathbf{h}^i_n + \mathbf{K'(h)}_n^i\mathbf{h}^i_n \right) ,
+\end{split}
+\end{equation*}
+
+at the end of each iteration the primary variables are updated as follows
+
+$$\mathbf{h}_n^{i+1} = \mathbf{h}_n^i + \Delta \mathbf{h}^i_n \quad .$$
+
+
+
+% The non-linear operator was treated by Picard iteration method and by Newton iteration method. The variational solution 
+% to the system \eqref{dual_richards}--\eqref{neumann1_dual} if Picard method considered and implicit Euler time integration considered states that
+% 
+% \begin{equation}
+% \begin{split}
+% \frac{1}{\Delta t}(h^{i-1})\frac{\partial h^i}{\partial t}\varphi \;{\rm
+% d}\bfx + \int_{\Omega} K(h^{i-1})\nabla h^i \cdot \nabla \varphi \;{\rm
+% d}\bfx - \\ - \int_{\Omega}K'(h^{i-1})\frac{\partial h^i}{\partial z}\varphi \;{\rm
+% d}\bfx = \int_{\Gamma_N} g \varphi \;{\rm d}\bfS
+% \end{split}
+% \end{equation}
+% 
+% where $i$ denotes an iteration level. The convergency criterion is defined as $||h^i - h^{i-1}|| < \varepsilon$, where $\varepsilon$ is some desired error.
+% 
+% 
+% The variational solution 
+% to the system \eqref{dual_richards}--\eqref{neumann1_dual} if Newton method considered states that
+% 
+% \begin{equation}
+% \begin{split}
+% \int_{\Omega}  C(h^{i-1})\frac{\partial h^i}{\partial t}\varphi \;{\rm
+% d}\bfx + \int_{\Omega}  C(h^{i-1})'\frac{\partial h^i}{\partial t}\varphi \;{\rm
+% d}\bfx + \\ +  \int_{\Omega} K(h^{i-1})\nabla h^i \cdot \nabla \varphi \;{\rm
+% d}\bfx + \\ + \int_{\Omega} K(h^{i-1})'\nabla h^i \cdot \nabla \varphi \;{\rm
+% d}\bfx - \\ - \int_{\Omega}K(h^{i-1})'\frac{\partial h^i}{\partial z}\varphi \;{\rm
+% d}\bfx - \int_{\Omega}K(h^{i-1})''\frac{\partial h^i}{\partial z}\varphi \;{\rm
+% d}\bfx = \\ = \int_{\Gamma_N} g \varphi \;{\rm d}\bfS  \quad .
+% \end{split}
+% \end{equation}
+
+
+
 
 
 \appendix
@@ -1322,7 +1750,7 @@ the so-called {\em edge functions},
 Edge functions are higher-order polynomials
 that are associated with mesh edges. On such 
 an edge, the edge function has a nonzero trace,
-and it is nonzero within the elements that share
+and it is nonzero within the elements that shareHigher order time integration methods for two-phase flow
 the edge (see Fig. \ref{fig:edge-fn}).
 
 \begin{figure}[!htb]
@@ -2370,6 +2798,8 @@ Phaml, a Fortran 90 code using adaptive refinement, multigrid and parallel compu
 
 
     \bibitem{richards} L.A. Richards, Physics 1 - DOI:10.1063/1.1745010 (1931) 318-333.
+Gaddafi also appointed Ali Abdussalam Treki, a senior Libyan diplomat, to be his country's new envoy to the UN after the entire Libyan delegation in New York deserted Gaddafi in support of Libya's protesters.
+
 
     \bibitem{scipy} Scipy: Open Source Library of Scientific Tools, {\tt http://www.scipy.org/}.
 
@@ -2432,8 +2862,20 @@ SfePy: Simple Finite Elements in Python, http://code.google.com/p/sfepy/.
 
 \bibitem{rawra} RAWRA -- Radioactive Waste Repository Authority of the Czech Republic, http://www.rawra.cz
 
+\bibitem{ross} P. J. Ross: Cubic approximation of hydraulic properties for simulations of unsaturated flow, Water Resour. Res., 28(10) (1992), 2617-2620.
+
+\bibitem{simunek} J. Simunek, K. Huang, M. Sejna, and M. T. van Genuchten: The HYDRUS-1D Software Package for Simulating the One-Dimensional
+Movement of Water Heat, and Multiple Solutes Variably Saturated Media, Version 1.0, U.S. Salinity Lab., U.S. Dep. of Agric.,
+Riverside, Calif., (1997)
+
+\bibitem{miller} C. T. Miller, G. A. Williams, C. T. Kelley, M. D. Tocci: Robust Solution of Richards' Equation for Nonuniform Porous Media, Water Resour. Res. 34(10) (1998), 2599-2610.
+
 \bibitem{vogel} T. Vogel, M. Th. van Genuchten, M. Cislerova: Effect of the Shape of the Soil Hydraulic Functions Near Saturation on
 Variably-Saturated Flow Predictions, Advances in Water Resources 24 (2001) 133-144.
+
+\bibitem{kees-time-integ} C.E. Kees, C.T. Miller: Higher order time integration methods for two-phase flow, Advances in Water Resources 25(2002) 159-177.
+
+\bibitem{sdirk} F. Ismail, R.A. Al-Khasawneh, M. Suleiman: Embedded Singly Diagonally Implicit Runge-Kutta-Nystr\'om General Method (3,4) in (4,5) for Solving Second Order IVPs, International Journal of Applied Mathematics 37(2007)
 
 
  \end{thebibliography}
