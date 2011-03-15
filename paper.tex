@@ -1085,7 +1085,7 @@ modification~(\ref{neuman-mod}).
 Based on results of Section \ref{sec:hpfem}, we only use adaptive $hp$-FEM
 for the computation. The relative spatial error tolerance in the $H^1$-norm
 is set to $0.5 \%$. This quantity (ratio of spatial error estimate and 
-solution norm) is used as stopping criterion for spatial mesh adaptivity
+solution norm) is used as stopping criterion for spatial mesh adaptivity.
 
 For the time-discretization we have chosen the second-order accurate 
 and unconditionally stable Crank-Nicolson method with a 
@@ -1179,7 +1179,7 @@ near Litom\v e\v rice, Czech Republic. The repository is located within a deep
 rock formation in the B{\'\i}dnice hill, 40~m below the surface and 70~m above 
 the ground water table, and it is  surrounded by a tectonically fractured 
 claystone. Under normal circumstances, this is a very stable unsaturated environment 
-and so this is a typical problem for applying the Richards' equation model. 
+and so this is a typical problem for applying the Richards equation model. 
 In order to protect its surroundings from radiotoxic pollution, the repository is shielded 
 with a 30~cm thick gravel layer that acts as a capillary barrier.  
 %tahle veta mi prisla ok
@@ -1666,9 +1666,8 @@ d}\bfx - \int_{\Gamma_N} g^{n+1} v_i \;{\rm d}\bfS = 0
 \end{equation}
 for all $i = 1, 2, \ldots, N$.
 Here $N$ is the dimension of the finite element subspace of $V$,
-the superscript $n$ enumerates time steps, $\Delta t$ is the length of the time step, 
-and $\mathbf{f}$ stands for the contribution of the (generally time-dependent) 
-Neumann boundary data. 
+the superscript $n$ enumerates time steps, and $\Delta t$ is the length of the time step. 
+
 
 Let us begin with the Picard's method. This method performs a simple linearization of 
 nonlinear product terms by moving all of them but one to the previous iteration level.
