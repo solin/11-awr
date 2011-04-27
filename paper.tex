@@ -461,10 +461,11 @@ rock formations, and others.
 The Richards equation is obtained by combining the Darcy-Buckingham's law
 with the law of conservation of mass. Its numerical solution 
 is the subject of an intense research since the early 1970s, beginning with Neuman's 
-finite element solution of unsteady dam seepage~\cite{neuman1}, Celia's mass 
-conservative modified Picard iteration~\cite{celia} method in the early 1990s, 
- the recent Kees's work with focus on stabilized finite element 
-approximations~\cite{kees,kees2,kees3}.
+finite element solution of unsteady dam seepage~\cite{neuman1}. 
+%Celia's mass 
+%conservative modified Picard iteration~\cite{celia} method in the early 1990s, 
+% the recent Kees's work with focus on stabilized finite element 
+%approximations~\cite{kees,kees2,kees3}.
 Numerical methods for the Richards equation
 can be tested on several simplified examples with known exact solutions 
 such as \cite{tracy1,tracy2}. 
@@ -478,7 +479,7 @@ conductivity, that cause stability problems.
 It follows from the relation  $\frac{\partial K(h)}{\partial z}=K'(h)\frac{\partial h}{\partial z}$
 that the problems are in fact caused by large slopes of $K(h)$. 
 
-One of the goals of this paper is to show that to certain extent, these problems 
+One of the goals of this paper is to show that to a certain extent, these problems 
 can be avoided by resolving areas with steep solution gradients with adaptive 
 finite element methods, so that 
 the underlying reason for the nonphysical oscillations ceases to exist. In particular,
@@ -501,11 +502,12 @@ with time-dependent boundary conditions. Section~\ref{sec:example-barrier} deals
 a nonstationary problem of capillary barrier behavior under an intense infiltration into 
 an initially unsaturated medium. Conclusions and outlook are drawn in Section \ref{sec:8}.
 
-In Appendix we present weak forms for the Richards equation and their solution 
-via the Picard's and Newton's method, describe in more detail some particular aspects on adaptive 
-$hp$-FEM that are relevant for computations performed in this paper. We also briefly 
-introduce the open source adaptive $hp$-FEM library HERMES \cite{hermes} that was used to 
-generate numerical results for this paper. 
+In Appendix A we present weak forms for the Richards equation and their solution 
+via the Picard's and Newton's methods, describe in more detail some particular 
+aspects on adaptive 
+$hp$-FEM that are relevant for computations performed in this paper. In Appendix B we
+briefly introduce the open source adaptive $hp$-FEM library HERMES \cite{hermes} 
+that was used to generate numerical results for this paper. 
 
 
 \section{Richards Equation}
@@ -553,7 +555,7 @@ in order to obtain the standard $h$-based form
 \subsection{Constitutive Relations}
 
 A relation between the water content and the pressure head is called 
-{\em retention curve}. Its most commonly used analytical formula is 
+a {\em retention curve}. Its most commonly used analytical formula is 
 the van Genuchten's equation~\cite{vangenuchten}:
 
 \begin{equation}
@@ -671,8 +673,7 @@ error very accurately, and thus compare fairly the performance of different meth
 The problem will be solved using adaptive $hp$-FEM, adaptive $h$-FEM with 
 quadratic elements $(p = 2)$, and adaptive $h$-FEM with linear elements $(p = 1)$
 using the open-source finite element library HERMES\footnote{http://hpfem.org/hermes}. 
-The library will be described in more 
-detail in Section \ref{sec:hermes}. 
+The library will be described in more detail in Appendix B. 
 
 The three computations start from the same coarse mesh and they are stopped when the 
 approximation error drops below $10^{-4}\%$ or when the memory for the matrix solver 
@@ -874,7 +875,7 @@ Figs. \ref{fig:init-meshes-1} -- \ref{fig:init-meshes-3}.
 \caption{Initial mesh for $h$-FEM with linear elements (24843 DOF).}
 \label{fig:init-meshes-3}
 \end{figure}
-In this and all consequent examples we use the implicit second-order 
+In this and all subsequent examples we use the implicit second-order 
 Crank-Nicolson method for time integration.
 In Figs. \ref{fig:init-meshes-1} - \ref{fig:init-meshes-3} 
 different colors are used to distinguish between 
@@ -967,10 +968,11 @@ Figs. \ref{fig:final-meshes-1} - \ref{fig:final-meshes-3}.
 \section{Groundwater Seepage into a Dry Lysimeter Box}
 \label{sec:example}
 
-This example is motivated by Kees' recent publication~\cite{kees}.  It is
+This example was used previously to study discretizations for Richards' equation 
+\cite{forsyth,kees}. It is
 concerned with an unsteady seepage of groundwater into an initially dry lysimeter with 
-a side bottom orifice. The domain of interest is a rectangle $(8.0, 0)  \times (0, 6.5)$ m$^2$ 
-bounded by $\Gamma_{1...6}$ as shown in Fig. \ref{fig:kees-uloha}.
+a side bottom orifice. The domain of interest is a rectangle $(8.0, 0)  \times (0, 6.5)$ 
+m$^2$ bounded by $\Gamma_{1...6}$ as shown in Fig. \ref{fig:kees-uloha}.
 
 \begin{figure*}[!ht]
 \begin{center}
@@ -1041,7 +1043,7 @@ nonhomogeneous boundary condition follows from (\ref{darcy-buck}).
 
 \subsection{Material Properties}
 
-The domain consists of two 50 cm thick surface layers and a low-permeable
+The domain consists of two 50 cm thick surface layers and a low-permeability
 clay block. The unsaturated material properties were obtained from~\cite{unsat-prop} 
 and the saturated material properties (storativity) \cite{pech}. 
 The first layer is a silt loam, and the second is a silty clay 
@@ -1166,9 +1168,9 @@ evolved with physical time (in days).
 \label{fig:conv-dof_time_2}
 \end{figure}
 
-The reader can experiment with this example on his/her 
-own, it is available in the HERMES code repository \cite{hermes-repo}
-as example "richards-seepage-adapt".
+Readers can obtain this example as "richards-seepage-adapt" from the 
+HERMES code repository in order to reproduce these results or conduct 
+additional experiments \cite{hermes-repo}.
 
 \section{Capillary Barrier Behavior Under an Intense Infiltration}
 \label{sec:example-barrier}
@@ -1550,8 +1552,7 @@ Celia et. al.~\cite{celia}). These errors are caused by improper discrete
 approximation of the time derivative term 
 $C(h)\frac{\partial h}{\partial t}$ that originates in the mass (water content) derivative 
 term $\frac{\partial \theta(h)}{\partial t}$. Kees et al.~\cite{kees-time-integ} have 
-shown in the context of two-phase flow that higher-order time integration methods
-can cure the mass balance problem. 
+shown how to solve the mass balance problem for higher-order time discretizations as well.
 
 The current study puts more emphasis on the spatial discretization methods 
 and spatial adaptivity. Time integration is carried out using the 
@@ -1565,7 +1566,7 @@ publish a detailed study of this subject in near future.
 \appendix
 
 
-\section{Weak Formulation of the Richard's Equation
+\section{Weak Formulation of the Richards Equation
 for the Newton's and Picard's Methods}\label{sec:9}
 
 Let $\Omega$ be a bounded domain in $\mathbb{R}^2$,
@@ -1805,7 +1806,7 @@ the so-called {\em edge functions},
 Edge functions are higher-order polynomials
 that are associated with mesh edges. On such 
 an edge, the edge function has a nonzero trace,
-and it is nonzero within the elements that shareHigher order time integration methods for two-phase flow
+and it is nonzero within the elements that share
 the edge (see Fig. \ref{fig:edge-fn}).
 
 \begin{figure}[!htb]
@@ -2299,7 +2300,7 @@ time-dependent nonlinear multiphysics PDE systems. The code repository \cite{her
 accessible on the project home page contains many examples from various 
 engineering and scientific areas including civil, mechanical, 
 electrical and nuclear engineering, computational fluid dynamics, 
-quantum chemistry, and hydrology.
+quantum chemistry, and hydro\-lo\-gy.
 
 \subsection{User Documentation}
 
@@ -2316,15 +2317,19 @@ create a local branches, make and commit changes, create and send patches,
 and use Github for sharing code. 
 
 The next part of the User Documentation is the Tutorial that is split 
-into six sections:
+into 10 sections:
 
 \begin{enumerate}
 \item Linear Problems.
-\item Automatic Adaptivity.
 \item Nonlinear Problems.
-\item Adaptivity for Time-Dependent Problems.
-\item Miscellaneous Techniques.
+\item Time-Dependent Problems.
+\item Adaptive Solution of Linear Problems.
+\item Adaptive Solution of Nonlinear Problems.
+\item Adaptive Solution of Time-Dependent Problems.
+\item Eigenvalue Problems.
+\item FVM and DG.
 \item Using Trilinos.
+\item Miscellaneous Techniques.
 \end{enumerate}
 The last two sections of the User Documentation contain 
 a detailed description of about twenty benchmark problems
@@ -2333,41 +2338,36 @@ and about twenty advanced examples.
 
 \subsection{An Example}
 
-The user has to write a C++ application in order to utilize 
-the library's functionality. For typical problems, this 
-applications are extremely simple. Let us demonstrate this on 
+In order to utilize the library's functionality, the user has 
+to write a custom C++ application. For typical problems, these 
+applications are very simple. Let us demonstrate this on 
 the adaptive example that was used in Section \ref{sec:hpfem}.
 The following code snippets are part of the main.cpp file 
-from benchmark "smooth-iso" that can be retrieved from HERMES
+from benchmark "lshape" that can be retrieved from HERMES
 code repository \cite{hermes-repo}. 
 
-One begins with specifying for each boundary marker whether the 
-corresponding boundary condition is natural or essential. In 
-this particular case, the entire boundary is Dirichlet and thus 
-essential:
+This problem comes with an exact solution (not shown here)
+that is instantiated as follows,
 
 \begin{code}
-// Boundary condition types.
-BCType bc_types(int marker)
-{
-  return BC_ESSENTIAL;
-}
+  CustomExactSolution exact_sln(&mesh);
 \end{code}
-In the next step, one defines boundary values for all 
-essential boundary conditions. These may depend on the 
-spatial position, possibly on time (via a global variable,
-and for the example in Section \ref{sec:hpfem} 
-they are zero:
+The exact solution is used to define Dirichlet 
+boundary conditions,
 
 \begin{code}
-scalar essential_bc_values(int ess_bdy_marker, 
-                           double x, double y)
-{
-  return 0;
-}
+  // Initialize boundary conditions
+  DefaultEssentialBCNonConst 
+    bc_essential(BDY_DIRICHLET, &exact_sln);
+  EssentialBCs bcs(&bc_essential);
 \end{code}
-In the next step the user enters the variational fomulation
-of the PDE. The weak forms can be real or complex valued,
+A predefined weak formulation is used for the Laplace equation,
+
+\begin{code}
+  // Initialize the weak formulation.
+  DefaultWeakFormLaplace wf;
+\end{code}
+Weak forms in HERMES can be real or complex valued,
 and there are two types of them -- {\em matrix forms} and
 {\em vector forms}. 
 
@@ -2383,116 +2383,10 @@ Vector forms are used to define
 \item linear forms in linear problems,
 \item residuals for nonlinear problems.
 \end{itemize}
-The example in Section \ref{sec:hpfem} 
-solves the Poisson equation $-\Delta u = f$
-with homogeneous Dirichlet boundary conditions,
-and thus the corresponding matrix form is 
-$$
-\int_{\Omega} \nabla u \cdot \nabla v \, \mbox{d}x\mbox{d}y.
-$$
-This is translated into the code as follows:
-
-\begin{code}
-// Matrix form.
-template<typename Real, typename Scalar>
-Scalar bilinear_form(int n, double *wt, 
-                     Func<Scalar> *u_ext[], 
-                     Func<Real> *u, Func<Real> *v, 
-                     Geom<Real> *e, 
-                     ExtData<Scalar> *ext)
-{
-  return int_grad_u_grad_v<Real, Scalar>(n, wt, u, v);
-}
-\end{code}
-Here, {\tt int\_grad\_u\_grad\_v} is a predefined macro 
-that performs the numerical integration in this widely used
-case. Without the macro, the code would read
-
-\begin{code}
-// Matrix form.
-template<typename Real, typename Scalar>
-Scalar bilinear_form(int n, double *wt, 
-                     Func<Scalar> *u_ext[], 
-                     Func<Real> *u, Func<Real> *v, 
-                     Geom<Real> *e, 
-                     ExtData<Scalar> *ext)
-{
-  Scalar val = 0;
-  for (int i = 0; i < n, i++) {
-    val += wt[i] * (u->dx[i] * v->dx[i] 
-                    + u->dy[i] * v->dy[i]);
-  }
-  
-  return val;
-}
-\end{code}
-Here {\tt n} is the number of integration points in the mesh
-element and {\tt wt} is an array of the corresponding integration
-weights. Physical coordinates of the integration points can be 
-accessed through the Geom structure along with other geometrical 
-information such as normal or tangential vectors on edges, etc.
-The variable {\tt u\_ext} contains the solution values and first and 
-second partial derivatives at all integration points, and it is 
-relevant for nonlinear problems only. The variables {\tt u} and 
-{\tt v} contain the same information for the basis function {\tt u}
-and test function {\tt v}. The struct {\tt ExtData} is used in 
-more advanced application to provided additional data for the 
-weak formulation.
- 
-The right-hand side of the weak formulation has the form 
-$$
-\int_{\Omega} fv\, \mbox{d}x\mbox{d}y.
-$$
-The function $f$ is defined via
-
-\begin{code}
-// Right-hand side function.
-template<typename Real>
-Real rhs(Real x, Real y)
-{
-  return 2*sin(x)*sin(y);
-}
-\end{code}
-and the linear form using
-
-\begin{code}
-// Vector form.
-template<typename Real, typename Scalar>
-Scalar linear_form(int n, double *wt, 
-                   Func<Scalar> *u_ext[], 
-                   Func<Real> *v, Geom<Real> *e, 
-                   ExtData<Scalar> *ext)
-{
-  return int_F_v<Real, Scalar>(n, wt, rhs, v, e);
-}
-\end{code}
-Again the function {\tt int\_F\_v} is a shortcut and 
-the full version of this function would be
-
-\begin{code}
-// Vector form.
-template<typename Real, typename Scalar>
-Scalar linear_form(int n, double *wt, 
-                   Func<Scalar> *u_ext[], 
-                   Func<Real> *v, Geom<Real> *e, 
-                   ExtData<Scalar> *ext)
-{
-  Scalar val = 0;
-  for (int i = 0l i < n; i++) {
-    val += wt[i] * rhs(e->x[i], e->y[i]) * v->val[i];
-  }
-
-  return val;
-}
-\end{code}
-Here the user can see how the physical coordinates of 
-integration points are accessed via the {\tt Geom}
-structure, and how one uses function values of the 
-test function {\tt v} at integration points.
- 
-After entering the weak formulation, the problem 
-can be solved. This is done using a standard sequence 
-of steps. First, the mesh is loaded:
+After that the problem 
+is solved using a standard sequence 
+of steps. First, the mesh is loaded
+as follows,
 
 \begin{code}
   // Load the mesh.
@@ -2515,18 +2409,15 @@ self-explanatory:
 Mesh::refine_element(int id, int refinement = 0);
 Mesh::convert_quads_to_triangles();
 Mesh::convert_triangles_to_quads();
-Mesh::refine_by_criterion(int (*criterion)(Element* e), 
-                          int depth);
 Mesh::refine_towards_vertex(int vertex_id, int depth);
 Mesh::regularize(int n);
 Mesh::unrefine_element(int id);
 Mesh::unrefine_all_elements();
 \end{code}
-Next, one creates a finite element space:
+Next, one creates a finite element space,
 \begin{code}
   // Create an H1 space with default shapeset.
-  H1Space space(&mesh, bc_types, essential_bc_values, 
-                P_INIT);
+  H1Space space(&mesh, &bcs, P_INIT);
 \end{code}
 Here, {\tt P\_INIT} is an initial polynomial degree 
 of mesh elements which currently can be an integer
@@ -2537,42 +2428,16 @@ PDE problems, each solution component can have
 a different space.
 
 After defining spaces for all solution components, 
-one needs to register the weak forms in the {\tt WeakForm}
-class:
-
-\begin{code}
-  // Initialize the weak formulation.
-  WeakForm wf;
-  wf.add_matrix_form(callback(bilinear_form), HERMES_SYM);
-  wf.add_vector_form(callback(linear_form));
-\end{code}
-The number of weak forms that are added here 
-can be arbitrary. 
-
-In typical non-adaptive computations one just needs 
-to call the function {\tt solve\_linear()}:
-
-\begin{code}
-  // Solve the linear problem.
-  Solution sln;
-  solve_linear(&space, &wf, &sln, matrix_solver);
-\end{code}
-Through the variable {\tt matrix\_solver} the user tells 
-his preference for the matrix solver. The options 
-currently available include UMFPACK, PETSc, MUMPS, 
-Trilinos and a variety of Python solvers available through 
-an interface to Scipy \cite{scipy}. After the call to 
-{\tt solve\_linear()} is finished, the variable {\tt sln}
-contains a solution that can be either saved to a file
-or visualized in HERMES directly using one of the {\tt ScalarView},
-or {\tt VectorView} classes. Other visualization classes 
-including {\tt MeshView}, {\tt BaseView}, etc. are available.
+one selects a matrix solver. The options 
+currently available include MUMPS, PETSc, UMFpack, SUPERLU, 
+Trilinos, and a variety of Python solvers available through 
+an interface to Scipy \cite{scipy}. 
 
 For adaptive computations, one needs to specify a refinement 
 selector that manages the selection of element refinement 
 candidates during adaptivity, as it was described in 
-Subsection \ref{subsec:cand}. In the example in Section \ref{sec:hpfem}
-we use an {\tt H1ProjBasedSelector}:
+\ref{subsec:cand}. In the example in Section 
+\ref{sec:hpfem} we use an {\tt H1ProjBasedSelector}:
 
 \begin{code}
   // Initialize refinement selector.
@@ -2622,64 +2487,75 @@ algorithm and their meaning can be found in the User Documentation.
 {\tt MESH\_REGULARITY} determines the maximum level of hanging nodes
 in the mesh. Regular meshes are not supported in HERMES due to their 
 notoriously bad performance. By specifying {\tt MESH\_REGULARITY = -1},
-one allows arbitrary-level hanging nodes (cf. Subsection 
-\ref{subsec:hang}).
+one allows arbitrary-level hanging nodes (cf. \ref{subsec:hang}).
 
-For a typical linear or nonlinear problem the last step is to call the 
-function call {\tt solve\_linear\_adapt()}:
+The adaptivity loop follows. Its first step is to 
+refine the mesh globally in both $h$ and $p$ and 
+compute a reference solution,
 
 \begin{code}
-  // Adaptivity loop.
-  Solution *sln = new Solution();
-  Solution *ref_sln = new Solution();
-  ExactSolution exact(&mesh, exact_sol);
-  WinGeom* swg = new WinGeom(0, 0, 440, 350);
-  WinGeom* mwg = new WinGeom(450, 0, 400, 350);
-  bool verbose = true;    
-  solve_linear_adapt(&space, &wf, HERMES_H1_NORM, sln, 
-                     matrix_solver, ref_sln, 
-                     &selector, &apt, swg, mwg, 
-                     verbose, &exact_sol);
+  // Construct globally refined reference 
+  // mesh and setup reference space.
+  Space* ref_space 
+    = Space::construct_refined_space(&space);
+
+  // Assemble the reference problem.
+  info("Solving on reference mesh.");
+  bool is_linear = true;
+  DiscreteProblem* dp 
+    = new DiscreteProblem(&wf, ref_space, is_linear);
+  dp->assemble(matrix, rhs);
+
+  // Solve the linear system of the reference problem.
+  //  If successful, obtain the solution.
+  Solution ref_sln;
+  if(solver->solve()) Solution::vector_to_solution(
+    solver->get_solution(), ref_space, &ref_sln);
+  else error ("Matrix solver failed.\n");
 \end{code}
-Here, {\tt sln} and {\tt ref\_sln} are the 
-solution pair on the coarse and globally refined 
-meshes, cf. Subsection \ref{subsec:cand}.
-{\tt ExactSolution} is an optional parameter to be used
-if the exact solution to the problem is know (as
-it is known for the problem in Section \ref{sec:hpfem}).
-The parameter {\tt H2D\_H1\_NORM} specifies that the
-adaptivity algorithm will be projecting the fine mesh
-solution on the coarse mesh using the $H^1$-norm. 
-Other possible norms are {\tt H2D\_HCURL\_NORM},
-{\tt H2D\_HDIV\_NORM} and {\tt H2D\_L2\_NORM}.
-By setting the Boolean variable {\tt verbose} to either 
-true or false, the user specifies whether he is 
-interested in the output of adaptivity data, such as 
-error estimates, numbers of degrees of freedom in the 
-coarse and fine mesh solutions, etc. The variables
-{\tt swg} and {\tt mwg} define geometries of 
-visualization windows. By setting them to NULL, the
-user disables visualization inside the {\tt solve\_linear\_adapt()}
-function. The last optional parameter {\tt exact\_sol}
-contains the exact solution (if available). If this 
-parameter is provided, then HERMES will also measure
-error wrt. exact solution in addition to its error
-estimate. 
+In the next step the reference solution is projected on
+the coarse mesh to obtain a low-order part
+for error estimation,
 
-For vector-valued problems, the 
-user can replace single variables such as 
-the space, projection norm, solution, reference solution, 
-or views with Tuples.
+\begin{code}
+  // Project the fine mesh solution on the coarse mesh.
+  Solution sln;
+  info("Projecting reference solution on coarse mesh.");
+  OGProjection::project_global(&space, 
+    &ref_sln, &sln, matrix_solver);
+\end{code}
+With the solution pair we can proceed to error 
+estimation,
 
-Users who have more advanced applications can copy and 
-edit the source code of the function {\tt solve\_linear\_adapt()}
-according to their needs. For more details we refer to the 
+\begin{code}
+  // Calculate element errors and total error estimate.
+  info("Calculating error estimate and exact error.");
+  Adapt* adaptivity = new Adapt(&space);
+  double err_est_rel 
+    = adaptivity->calc_err_est(&sln, &ref_sln) * 100;
+\end{code}
+Finally, with an a-posteriori error estimate, we can 
+adapt the mesh:
+
+\begin{code}
+  // If err_est too large, adapt the mesh.
+  if (err_est_rel < ERR_STOP) done = true;
+  else
+  {
+    info("Adapting coarse mesh.");
+    done = adaptivity->adapt(&selector, THRESHOLD, 
+                       STRATEGY, MESH_REGULARITY);
+
+    // Increase the counter of performed 
+    // adaptivity steps.
+    if (done == false)  as++;
+  }
+  if (Space::get_num_dofs(&space) >= NDOF_STOP) 
+    done = true;
+\end{code}
+For more details we refer to the 
 Sphinx tutorial to HERMES that is available on the 
-project home page \cite{hermes}. The tutorial also covers more advanced 
-examples such as the solution of multiphysics coupled problems
-using adaptive $hp$-FEM on dynamical meshes.   
-
-
+project home page \cite{hermes}. 
 
 \subsection{Interactive Web Accessibility}
 \label{sec:onlinelab}
@@ -2717,7 +2593,7 @@ flow is currently in development.
 \end{center}
 \vspace{-4mm}
 \caption{Sample snapshot of AGROS on Mac OS X. An electromagnetic 
-         simulation is shown, but a Richard's module is in development.}
+         simulation is shown, but a Richards module is in development.}
 \label{fig:agros}
 \end{figure*}
 
@@ -2729,8 +2605,7 @@ The first author gratefully acknowledges the financial support
 of the Grant Agency of the Academy of Sciences of the Czech 
 Republic under Grant No. IAA100760702. The second author
 was supported with a Grant of the Czech Ministry of Agriculture No.
-QH 91247. The third author's research 
-was supported by the LC06040 research center project. 
+QH 91247. 
 
 %% The Appendices part is started with the command \appendix;
 %% appendix sections are then done as normal sections
@@ -2778,7 +2653,7 @@ submitted to J. Comput. Phys.
 \bibitem{kees3}
 M. W. Farthing, C. E. Kees, T. S. Coffey, C. T. Kelley, C. T. Miller: Efficient Steady-State Solution Techniques for Variably Saturated Groundwater Flow, Advances in Water Resources 26 (2003) 833-849.
 
-\bibitem{kuraz-jcam}  M. Kuraz, P. Mayer, M. Leps, D. Trpkosova: An Adaptive Time Discretization of the Classical and the Dual Porosity Model of Richards' Equation, Journal of Computational and 
+\bibitem{kuraz-jcam}  M. Kuraz, P. Mayer, M. Leps, D. Trpkosova: An Adaptive Time Discretization of the Classical and the Dual Porosity Model of Richards Equation, Journal of Computational and 
 Applied Mathematics 233 (2010), 3167-3177
 
 \bibitem{femhub}
@@ -2923,14 +2798,14 @@ SfePy: Simple Finite Elements in Python, http://code.google.com/p/sfepy/.
 Movement of Water Heat, and Multiple Solutes Variably Saturated Media, Version 1.0, U.S. Salinity Lab., U.S. Dep. of Agric.,
 Riverside, Calif., (1997)
 
-\bibitem{miller} C. T. Miller, G. A. Williams, C. T. Kelley, M. D. Tocci: Robust Solution of Richards' Equation for Nonuniform Porous Media, Water Resour. Res. 34(10) (1998), 2599-2610.
+\bibitem{miller} C. T. Miller, G. A. Williams, C. T. Kelley, M. D. Tocci: Robust Solution of Richards Equation for Nonuniform Porous Media, Water Resour. Res. 34(10) (1998), 2599-2610.
 
 \bibitem{vogel} T. Vogel, M. Th. van Genuchten, M. Cislerova: Effect of the Shape of the Soil Hydraulic Functions Near Saturation on
 Variably-Saturated Flow Predictions, Advances in Water Resources 24 (2001) 133-144.
 
 \bibitem{kees-time-integ} C.E. Kees, C.T. Miller: Higher order time integration methods for two-phase flow, Advances in Water Resources 25(2002) 159-177.
 
-\bibitem{sdirk} F. Ismail, R.A. Al-Khasawneh, M. Suleiman: Embedded Singly Diagonally Implicit Runge-Kutta-Nystr\'om General Method (3,4) in (4,5) for Solving Second Order IVPs, International Journal of Applied Mathematics 37(2007)
+%\bibitem{sdirk} F. Ismail, R.A. Al-Khasawneh, M. Suleiman: Embedded Singly Diagonally Implicit Runge-Kutta-Nystr\'om General Method (3,4) in (4,5) for Solving Second Order IVPs, International Journal of Applied Mathematics 37(2007)
 
 
  \end{thebibliography}
