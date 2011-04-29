@@ -413,7 +413,7 @@
 
 \address{${}^1$Department of Mathematics and Statistics, University of Nevada, Reno, USA}
 \address{${}^2$Institute of Themomechanics, Prague, Czech Republic}
-\address{${}^3$Department of Water Resources and Environmental Modeling, Czech University of Life Sciences, Prague, Czech Republic}
+\address{${}^3$Department of Water Resources and Environmental Modeling, Czech University of Life Sciences Prague, Czech Republic}
 %\address{${}^4$Institute of Physics, Academy of Sciences of the Czech Republic, Czech Republic}
 
 \begin{abstract}
@@ -1049,13 +1049,12 @@ and the saturated material properties (storativity) \cite{pech}.
 The first layer is a silt loam, and the second is a silty clay 
 loam. Layer three is sandy clay loam and layer four silty clay again. 
 For details on the material parameters see Fig.~\ref{fig:kees-uloha} 
-and Table~\ref{Material-properties}. For the corresponding constitutive 
+and Table~2. For the corresponding constitutive 
 relations we use the van Genuchten's law~(\ref{vangenuchten-eq}) and Mualem's 
 law~(\ref{mualem-int}).
 
 \begin{table*}[!ht]
 \begin{center}
-\label{Material-properties}
 \caption{Material properties.}
 \begin{small}
 % double K_S_1 = 0.108;
@@ -1074,6 +1073,7 @@ type & $K_S$ [m.d${}^{-1}$] & $\theta_s$ [-] & $\theta_r$ [-] & $\alpha$ [m${}^{
 \end{tabular}
 \end{small}
 \end{center} 
+\label{table:2}
 \end{table*} 
 
 
@@ -1092,7 +1092,7 @@ solution norm) is used as stopping criterion for spatial mesh adaptivity.
 For the time-discretization we have chosen the second-order accurate 
 and unconditionally stable Crank-Nicolson method with a 
 time step of 1.5 minutes. A few snapshots of the solution and meshes 
-are shown in Figs. \ref{fig:see-sol-0} and \ref{fig:see-mesh-4}.
+are shown in Figs. \ref{fig:see-sol-0}, \ref{fig:see-mesh-0}, \ref{fig:see-sol-1}, \ref{fig:see-mesh-1}, \ref{fig:see-sol-4}, and \ref{fig:see-mesh-4}.
 
 \begin{figure}[!ht]
 \begin{center}
@@ -1408,7 +1408,7 @@ period the barrier still protects the repository.\\
 \subsubsection{Period 2}
 This is the most demanding part of the computation since the capillary barrier collapses 
 and the gravel layer is quickly filled with the infiltrated water. The flow is dominantly 
-vertical (see Figs.~\ref{fig:solution2.1} and~\ref{fig:solution2.2}) and thus the convective 
+vertical (see Figs.~\ref{fig:solution2.1}, \ref{fig:solution2.2}, and~\ref{fig:solution2-mesh}) and thus the convective 
 term $\frac{\partial K(h)}{\partial z}$ attains large values. This fact, together with an 
 extremely nonlinear nature of the unsaturated 
 hydraulic functions of the gravel close to full saturation,
@@ -2578,7 +2578,7 @@ it to his/her own computing servers.
 AGROS (http://hpfem.org/agros2d) is a multiplatform C++ application for the solution 
 of single and multiphysics PDE problems based on the HERMES library. AGROS provides 
 an advanced graphical user interface (GUI), interactive geometry modeling and CAD import, 
-automatic meshing, and a number of advanced visualization and postprocessing features. 
+automatic meshing, and a number of advanced visualization and postprocessing features (see Fig.~\ref{fig:agros}). 
 The code is being developed by an engineering research group at the University of West 
 Bohemia in Pilsen, Czech Republic. AGROS is distributed under the GNU General Public 
 License. Currently, it supports the finite element analysis of electrostatic fields,
